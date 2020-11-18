@@ -9,5 +9,4 @@ func main() {
 	app.Initialize()
 	// env arg?
 	app.Run(":8080")
-	fmt.Println("Started bar api.")
 }

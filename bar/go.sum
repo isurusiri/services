@@ -1,2 +1,4 @@
 github.com/gorilla/mux v1.8.0 h1:i40aqfkR1h2SlN9hojwV5ZA91wcXFOvkdNIeFDP5koI=
 github.com/gorilla/mux v1.8.0/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
+github.com/isurusiri/services v0.0.0-20201117163421-b2de580b22f8 h1:KDC56y25hvey/fk29arTc866oc/ZqcaCXDmxiXknCkA=
+github.com/isurusiri/services/bar v0.0.0-20201117163421-b2de580b22f8 h1:3QwlUALEJC256/eAdoM6AebPc9kd4LZEDoqSVlI1hWQ=
