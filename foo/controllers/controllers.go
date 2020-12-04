@@ -2,8 +2,10 @@ package controllers
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 
+	"github.com/isurusiri/services/foo/net"
 	"github.com/isurusiri/services/shared/models"
 )
 
@@ -18,6 +20,11 @@ func FooController(w http.ResponseWriter, r *http.Request) {
 	apiResponse.ResourcePath = "/"
 
 	// get remote
+	remote, err := net.GetRemote("")
+	if err != nil {
+		log.Println(err)
+	}
+	apiResponse.Remote = remote
 
 	json.NewEncoder(w).Encode(apiResponse)
 }
