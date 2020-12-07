@@ -1,12 +1,24 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+
+	"github.com/isurusiri/services/bar/context"
+)
 
 var app App
+var appContext context.AppContext
+
+func initContext() {
+	appContext := context.New()
+	appContext.SetRunningPort(os.Getenv("BAR_RUNNING_PORT"))
+}
 
 func main() {
 	fmt.Println("Starting bar api.")
+	initContext()
 	app.Initialize()
-	// env arg?
-	app.Run(":8080")
+
+	app.Run(fmt.Sprintf(":%v", appContext.GetRunningPort()))
 }

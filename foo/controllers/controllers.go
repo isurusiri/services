@@ -5,11 +5,13 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/isurusiri/services/foo/context"
 	"github.com/isurusiri/services/foo/net"
 	"github.com/isurusiri/services/shared/models"
 )
 
 var apiResponse models.APIResponse
+var appContext context.AppContext
 
 // FooController handles the root url of the bar service
 // Request path: /
@@ -20,7 +22,8 @@ func FooController(w http.ResponseWriter, r *http.Request) {
 	apiResponse.ResourcePath = "/"
 
 	// get remote
-	remote, err := net.GetRemote("")
+	appContext := context.New()
+	remote, err := net.GetRemote(appContext.GetRemoteHost())
 	if err != nil {
 		log.Println(err)
 	}
