@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-service-ingress
+  namespace: demo-services
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /foo
+            pathType: Prefix
+            backend:
+              service:
+                name: foo-service
+                port:
+                  number: 80

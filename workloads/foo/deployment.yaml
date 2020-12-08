@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo-service
+  namespace: demo-services
+  labels:
+    app: foo-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: foo-service
+  template:
+    metadata:
+      labels:
+        app: foo-service
+    spec:
+      serviceAccountName: foo-service-sa
+      containers:
+        - name: foo-service
+          image: isurursiri/foo-service:1
+          env:
+            - name: FOO_RUNNING_PORT
+              value: 8090
+            - name: FOO_REMOTE_HOST
+              value: http://bar-service
+          ports:
+            - containerPort: 8090

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bar-service
+  namespace: demo-services
+  labels:
+    app: bar-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bar-service
+  template:
+    metadata:
+      labels:
+        app: bar-service
+    spec:
+      serviceAccountName: bar-service-sa
+      containers:
+        - name: bar-service
+          image: isurursiri/bar-service:1
+          env:
+            - name: BAR_RUNNING_PORT
+              value: 8080
+          ports:
+            - containerPort: 8080
