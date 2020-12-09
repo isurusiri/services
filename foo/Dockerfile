@@ -33,8 +33,8 @@ WORKDIR /root/
 COPY --from=builder /app/foo .
 # COPY --from=builder /app/.env .
 
-# Expose the port 8080 to the outside
-EXPOSE 8080
+# Expose the port 8090 to the outside
+EXPOSE 8090
 
 # Execute the binary
 CMD ["./foo"]
