@@ -7,18 +7,17 @@ LABEL maintainer="Isuru Siriwardana <isurusiri@protonmail.com>"
 # Install git for fetching dependencies.
 RUN apk update && apk add --no-cache git
 
-# Set the current working directory inside the container
-WORKDIR /app
+# Set the current working directory inside the container for shared module
+WORKDIR /go/src/github.com/isurusiri/services/shared
 
-# Copy go mod and sum files
-COPY go.mod go.sum ./
+# Copy the share module
+ADD ./shared .
 
-# Download all dependencies. All Dependencies will be cached 
-# if the go.mod and go.sum files are not changed
-RUN go mod download
+# Set the current working directory inside the container for foo module
+WORKDIR /go/src/github.com/isurusiri/services/foo
 
-# Copy source from the current directory to the working directory
-COPY . . 
+# Copy the foo module
+ADD ./foo .
 
 # Build the app
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o foo .
@@ -30,7 +29,7 @@ RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 
 # Copy the pre-built binary from the previous stage
-COPY --from=builder /app/foo .
+COPY --from=builder /go/src/github.com/isurusiri/services/foo .
 # COPY --from=builder /app/.env .
 
 # Expose the port 8090 to the outside
