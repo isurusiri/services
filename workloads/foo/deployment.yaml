@@ -18,11 +18,11 @@ spec:
       serviceAccountName: foo-service-sa
       containers:
         - name: foo-service
-          image: isurursiri/foo-service:1
+          image: isurusiri91/foo-service:latest
           env:
             - name: FOO_RUNNING_PORT
-              value: 8090
+              value: "8090"
             - name: FOO_REMOTE_HOST
-              value: http://bar-service
+              value: "http://bar-service"
           ports:
             - containerPort: 8090

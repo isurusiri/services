@@ -18,9 +18,9 @@ spec:
       serviceAccountName: bar-service-sa
       containers:
         - name: bar-service
-          image: isurursiri/bar-service:1
+          image: isurusiri91/bar-service:latest
           env:
-            - name: BAR_RUNNING_PORT
-              value: 8080
+          - name: BAR_RUNNING_PORT
+            value: "8080"
           ports:
             - containerPort: 8080
