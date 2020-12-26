@@ -11,8 +11,8 @@ var app App
 var appContext context.AppContext
 
 func initContext() {
-	appContext := context.New()
-	appContext.SetRunningPort(os.Getenv("BAR_RUNNING_PORT"))
+	appContext := context.New(os.Getenv("BAR_RUNNING_PORT"))
+	fmt.Printf("AppContext is:%v\n", appContext)
 }
 
 func main() {
@@ -20,5 +20,5 @@ func main() {
 	initContext()
 	app.Initialize()
 
-	app.Run(fmt.Sprintf(":%v", appContext.GetRunningPort()))
+	app.Run(fmt.Sprintf(":%v", context.GetRunningPort()))
 }

@@ -11,9 +11,8 @@ var app App
 var appContext context.AppContext
 
 func initContext() {
-	appContext := context.New()
-	appContext.SetRunningPort(os.Getenv("FOO_RUNNING_PORT"))
-	appContext.SetRemoteHost(os.Getenv("FOO_REMOTE_HOST"))
+	appContext := context.New(os.Getenv("FOO_RUNNING_PORT"), os.Getenv("FOO_REMOTE_HOST"))
+	fmt.Printf("AppContext is:%v\n", appContext)
 }
 
 func main() {
@@ -21,5 +20,5 @@ func main() {
 	app.Initialize()
 	initContext()
 
-	app.Run(fmt.Sprintf(":%v", appContext.GetRunningPort()))
+	app.Run(fmt.Sprintf(":%v", context.GetRunningPort()))
 }

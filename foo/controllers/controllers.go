@@ -22,8 +22,7 @@ func FooController(w http.ResponseWriter, r *http.Request) {
 	apiResponse.ResourcePath = "/"
 
 	// get remote
-	appContext := context.New()
-	remote, err := net.GetRemote(appContext.GetRemoteHost())
+	remote, err := net.GetRemote(context.GetRemoteHost())
 	if err != nil {
 		log.Println(err)
 	}

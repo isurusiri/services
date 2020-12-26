@@ -1,31 +1,29 @@
 package context
 
-import "sync"
-
 // AppContext holds all configurations of the
 // running application instance.
 type AppContext struct {
-	runningPort string
+	RunningPort string
 }
 
 var appContext *AppContext
-var once sync.Once
 
 // New create a new singleton instance of the app
-func New() *AppContext {
-	once.Do(func() {
-		appContext = &AppContext{}
-	})
+func New(port string) *AppContext {
+
+	if appContext == nil {
+		appContext = &AppContext{RunningPort: port}
+	}
 
 	return appContext
 }
 
 // GetRunningPort returns the port
-func (a *AppContext) GetRunningPort() string {
-	return a.runningPort
+func GetRunningPort() string {
+	return appContext.RunningPort
 }
 
 // SetRunningPort sets the running port
-func (a *AppContext) SetRunningPort(port string) {
-	a.runningPort = port
+func SetRunningPort(port string) {
+	appContext.RunningPort = port
 }
