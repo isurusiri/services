@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # services <ACTION> <COMPONENT> <NAME>
 # services install namespace names
