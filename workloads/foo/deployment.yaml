@@ -23,6 +23,6 @@ spec:
             - name: FOO_RUNNING_PORT
               value: "8090"
             - name: FOO_REMOTE_HOST
-              value: "http://bar-service"
+              value: "http://bar-service:8080"
           ports:
             - containerPort: 8090
