@@ -21,7 +21,7 @@ type App struct {
 func (a *App) Initialize() {
 	a.router = mux.NewRouter().StrictSlash(true)
 
-	// regoster routes
+	// register routes
 	a.registerRoutes()
 	fmt.Println("Initialized the router.")
 }
